@@ -8,9 +8,27 @@ const postSchema = new mongoose.Schema(
       required: true,
     },
     content: { type: String },
-    type: { type: String, enum: ["Public", "Private"], default: "Public" },
-    isDeleted: { type: Boolean, default: false },
+    type: {
+      type: String,
+      enum: ["Public", "Private", "Friends"],
+      default: "Public",
+    },
+    is_deleted: { type: Boolean, default: false },
     deleted_at: { type: Date, default: null },
+    shared_post_id: {
+      // Share pót
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Post",
+      default: null,
+    },
+    moderation_status: { type: String, default: "normal" },
+    moderation_details: { type: Object, default: {} },
+    severity: {
+      type: String,
+      enum: ["low", "medium", "high", "critical"],
+      default: "low"
+    },
+    viewCount: { type: Number, default: 0 },
   },
   { timestamps: true }
 );

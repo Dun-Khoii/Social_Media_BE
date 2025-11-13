@@ -11,6 +11,7 @@ yarn-error.log*
 # Environment variables
 .env
 .env.*
+*.pem
 
 # OS files
 .DS_Store
@@ -47,3 +48,6 @@ pids/
 *.pid
 *.seed
 *.pid.lock
+
+google-services.json
+admin-google-services.json

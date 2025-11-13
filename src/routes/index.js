@@ -2,6 +2,24 @@ const express = require("express");
 const userRoutes = require("./users");
 const tokenRoutes = require("./token");
 const postRoutes = require("./post.route");
+const commentRoutes = require("./comment.route");
+const groupRoutes = require("./group.route");
+const groupPostRoutes = require("./group_post.route");
+const friendRoutes = require("./friend.route");
+// const notificationRoutes = require("./notification.route");
+// const userSettingRoutes = require("./user_setting.route");
+const notificationRoutes = require("./notification.route");
+const channelRoutes = require("./channel.route");
+const mediaRoutes = require("./media.route");
+const agoraRoutes = require("./agora.route");
+const adsRoutes = require("./ads.route");
+const paymentRoutes = require("./payment.route");
+const storyRoutes = require("./story.route");
+const adminRoutes = require("./admin.route");
+const reportRoutes = require("./report.route");
+const systemSettingsRoutes = require("./systemSettings.route");
+const uploadMediaRoutes = require("./upload-media.route");
+const { SaveFcmToken } = require("../controllers/fcm-token.controller");
 const router = express.Router();
 
 router.get("/", (req, res) => {
@@ -11,7 +29,22 @@ router.get("/", (req, res) => {
 router.use("/user", userRoutes);
 router.use("/refresh", tokenRoutes);
 router.use("/post", postRoutes);
+router.use("/comment", commentRoutes);
+router.use("/group", groupRoutes);
+router.use("/group-post", groupPostRoutes);
+router.use("/", friendRoutes);
+router.use("/notifications", notificationRoutes);
+router.use("/channels", channelRoutes);
+router.use("/media", mediaRoutes);
+router.use("/agora", agoraRoutes);
+router.use("/ads", adsRoutes);
+router.use("/payment", paymentRoutes);
+router.use("/stories", storyRoutes);
+router.use("/admin", adminRoutes);
+router.use("/reports", reportRoutes);
+router.use("/admin/settings", systemSettingsRoutes);
+router.use("/upload", uploadMediaRoutes);
 
-router
+router.post("/save-fcm-token", SaveFcmToken);
 
 module.exports = router;
